@@ -69,20 +69,20 @@ export default function FaqAccordion() {
   };
 
   return (
-    <section id="faq" className="relative w-full py-24 sm:py-32 bg-[#fcf8f2] border-t border-neutral-200/80 overflow-hidden">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8">
+    <section id="faq" className="relative w-full py-16 sm:py-24 lg:py-32 bg-[#fcf8f2] border-t border-neutral-200/80 overflow-hidden">
+      <div className="max-w-4xl mx-auto px-4 sm:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#12141a]">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#12141a]">
             Frequently Asked Questions About LLM Development
           </h2>
-          <p className="mt-4 text-neutral-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-3 sm:mt-4 text-neutral-600 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
             Everything you need to know about developing, integrating, and maintaining production-ready Large Language Model applications.
           </p>
         </div>
 
         {/* 10 Accordion Items */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3 sm:gap-4">
           {LLM_FAQS_LIST.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
@@ -97,25 +97,25 @@ export default function FaqAccordion() {
                 <button
                   type="button"
                   onClick={() => toggleFaq(index)}
-                  className="w-full text-left p-6 sm:p-7 flex items-center justify-between gap-4 cursor-pointer"
+                  className="w-full text-left p-4 sm:p-7 flex items-center justify-between gap-3 sm:gap-4 cursor-pointer"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-base sm:text-lg font-bold text-neutral-900 tracking-tight">
+                  <span className="text-sm sm:text-base md:text-lg font-bold text-neutral-900 tracking-tight">
                     {faq.question}
                   </span>
                   <div
-                    className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${
+                    className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${
                       isOpen
                         ? "bg-[#ff5e00] text-white rotate-180 shadow-md shadow-orange-500/20"
                         : "bg-neutral-100 text-neutral-500"
                     }`}
                   >
-                    <ChevronDown className="w-5 h-5" />
+                    <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 sm:px-7 pb-6 sm:pb-7 text-neutral-600 text-sm sm:text-base leading-relaxed border-t border-neutral-100 pt-4">
+                  <div className="px-4 sm:px-7 pb-4 sm:pb-7 text-neutral-600 text-xs sm:text-sm md:text-base leading-relaxed border-t border-neutral-100 pt-3 sm:pt-4">
                     <p>{faq.answer}</p>
                   </div>
                 )}

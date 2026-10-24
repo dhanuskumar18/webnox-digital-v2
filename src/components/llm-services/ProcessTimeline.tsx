@@ -105,15 +105,15 @@ export default function ProcessTimeline() {
   return (
     <section
       id="process"
-      className="relative w-full py-24 sm:py-32 bg-[#fdfaf6] overflow-hidden"
+      className="relative w-full py-16 sm:py-24 lg:py-32 bg-[#fdfaf6] overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Section Header */}
-        <div className="max-w-4xl mb-14 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#12141a] leading-tight">
+        <div className="max-w-4xl mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#12141a] leading-tight">
             Our LLM Development Process: From Planning to Deployment
           </h2>
-          <p className="mt-4 text-neutral-600 text-base sm:text-lg leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-neutral-600 text-xs sm:text-sm md:text-base leading-relaxed">
             A structured, disciplined engineering path that takes large language models from initial use-case discovery and RAG pipeline construction to production-grade deployment and real-time monitoring.
           </p>
         </div>

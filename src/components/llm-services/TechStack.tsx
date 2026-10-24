@@ -2,15 +2,18 @@
 
 import React from "react";
 import FolderFloat from "@/components/ui/FolderFloat";
+import MobileTechStack, { MobileTechCategory } from "@/components/ui/MobileTechStack";
 
-interface TechCategory {
+interface TechCategory extends MobileTechCategory {
   title: string;
   technologies: string[];
+  shortTitle?: string;
 }
 
 const TECH_CATEGORIES: TechCategory[] = [
   {
     title: "LLM Providers and Models",
+    shortTitle: "Models & Providers",
     technologies: [
       "OpenAI GPT",
       "Anthropic Claude",
@@ -21,6 +24,7 @@ const TECH_CATEGORIES: TechCategory[] = [
   },
   {
     title: "Retrieval and Knowledge Systems",
+    shortTitle: "RAG & Retrieval",
     technologies: [
       "Embedding Models",
       "Vector Databases",
@@ -31,6 +35,7 @@ const TECH_CATEGORIES: TechCategory[] = [
   },
   {
     title: "Application Engineering",
+    shortTitle: "Engineering",
     technologies: [
       "Python",
       "FastAPI",
@@ -41,6 +46,7 @@ const TECH_CATEGORIES: TechCategory[] = [
   },
   {
     title: "Orchestration and Tool Use",
+    shortTitle: "Orchestration",
     technologies: [
       "Structured Outputs",
       "Function Calling",
@@ -51,6 +57,7 @@ const TECH_CATEGORIES: TechCategory[] = [
   },
   {
     title: "Evaluation and Observability",
+    shortTitle: "Observability",
     technologies: [
       "Test Datasets",
       "Automated Evaluations",
@@ -61,6 +68,7 @@ const TECH_CATEGORIES: TechCategory[] = [
   },
   {
     title: "Infrastructure and Deployment",
+    shortTitle: "Infrastructure",
     technologies: [
       "Cloud Services",
       "Containerized Envs",
@@ -73,19 +81,25 @@ const TECH_CATEGORIES: TechCategory[] = [
 
 export default function TechStack() {
   return (
-    <section className="relative w-full py-24 sm:py-32 bg-[#fcf8f2] border-t border-b border-neutral-200/80 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <div className="max-w-4xl mb-16 sm:mb-20">
-          <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#12141a]">
+    <section className="relative w-full py-14 sm:py-20 lg:py-28 bg-[#fcf8f2] border-t border-b border-neutral-200/80 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="max-w-4xl mb-8 sm:mb-14 lg:mb-18">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#12141a]">
             LLM Development Technology Stack
           </h3>
-          <p className="mt-4 text-neutral-600 text-base sm:text-lg leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-neutral-600 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
             We select technologies based on the application, data requirements, operating environment, and expected scale rather than forcing every project into the same stack. Hover or tap any category folder to reveal the underlying technologies.
           </p>
         </div>
 
-        {/* 6 Technology Categories Grid with FolderFloat */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-32 pt-24 pb-12">
+        {/* Mobile Tech Stack Explorer (visible below md) */}
+        <MobileTechStack
+          categories={TECH_CATEGORIES}
+          sectionTitle="LLM Development Technology Stack"
+        />
+
+        {/* Desktop 6 Technology Categories Grid with FolderFloat (visible on md and up) */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 lg:gap-x-10 gap-y-24 sm:gap-y-32 pt-16 sm:pt-24 pb-8 sm:pb-12">
           {TECH_CATEGORIES.map((cat, idx) => (
             <div
               key={idx}
@@ -123,7 +137,7 @@ export default function TechStack() {
         </div>
 
         {/* Bottom architecture disclosure note */}
-        <div className="mt-20 pt-8 border-t border-neutral-200/80 text-center max-w-2xl mx-auto">
+        <div className="mt-12 sm:mt-20 pt-6 sm:pt-8 border-t border-neutral-200/80 text-center max-w-2xl mx-auto">
           <p className="text-xs sm:text-sm text-neutral-500 font-medium">
             * The final stack is determined during technical discovery and architecture planning.
           </p>
