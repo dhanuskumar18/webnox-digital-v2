@@ -2,6 +2,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import ThreeDShowcase from "@/components/sections/ThreeDShowcase";
 import WhoWeAre from "@/components/sections/WhoWeAre";
 import Services from "@/components/sections/Services";
+import ConversionCta from "@/components/ai-services/ConversionCta";
 import Solutions from "@/components/sections/Solutions";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import IndustrySolutions from "@/components/sections/IndustrySolutions";
@@ -27,6 +28,8 @@ export default function Home() {
         <WhoWeAre />
         
         <Services />
+        
+        <ConversionCta />
         
         <Solutions />
         
