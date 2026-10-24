@@ -10,6 +10,7 @@ import NotTypicalAgency from "@/components/sections/NotTypicalAgency";
 import Testimonials from "@/components/sections/Testimonials";
 import Faq from "@/components/sections/Faq";
 import LetsGrowTogether from "@/components/sections/LetsGrowTogether";
+import Footer from "@/components/ai-services/Footer";
 
 export default function Home() {
   return (
@@ -42,6 +43,9 @@ export default function Home() {
         <Faq />
         
         <LetsGrowTogether />
+
+        {/* Footer */}
+        <Footer />
        
       </main>
     </SmoothScroll>
