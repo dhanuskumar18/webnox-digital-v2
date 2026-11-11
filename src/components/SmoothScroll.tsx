@@ -12,76 +12,88 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Initialize Lenis with autoResize and smooth parameters
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      autoResize: true,
-      anchors: true,
+      stopInertiaOnNavigate: true,
+      prevent: (node) =>
+        node instanceof HTMLTextAreaElement &&
+        node.scrollHeight > node.clientHeight,
     });
 
     lenisRef.current = lenis;
 
-    // Expose instance globally for programmatic scrolls (e.g. CTA buttons)
-    if (typeof window !== "undefined") {
-      (window as any).__lenis = lenis;
-    }
-
-    // Connect Lenis scroll events to GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
-    // Sync Lenis with ScrollTrigger's height calculations
-    const onScrollTriggerRefresh = () => {
+    // Sync Lenis with ScrollTrigger's height calculations (especially for pin spacers)
+    const handleScrollTriggerRefresh = () => {
       lenis.resize();
     };
-    ScrollTrigger.addEventListener("refresh", onScrollTriggerRefresh);
+    ScrollTrigger.addEventListener("refresh", handleScrollTriggerRefresh);
 
-    // Continuous tick synchronization with GSAP ticker
-    const tickerUpdate = (time: number) => {
+    const handleTick = (time: number) => {
       lenis.raf(time * 1000);
     };
-    gsap.ticker.add(tickerUpdate);
+    gsap.ticker.add(handleTick);
     gsap.ticker.lagSmoothing(0);
 
-    // CRITICAL: Watch body and documentElement mutations so dynamic content (images, 3D canvases, steppers)
-    // continuously updates Lenis's internal scroll limit and never locks the scrollbar
-    const resizeObserver = new ResizeObserver(() => {
-      lenis.resize();
-      ScrollTrigger.refresh();
+    let lastScrollHeight = document.documentElement.scrollHeight;
+    let resizeRafId: number | null = null;
+    let isDisposed = false;
+
+    const syncDimensions = () => {
+      if (isDisposed) return;
+      const currentScrollHeight = document.documentElement.scrollHeight;
+      if (currentScrollHeight !== lastScrollHeight) {
+        lastScrollHeight = currentScrollHeight;
+        if (lenis.isScrolling === "smooth") {
+          lenis.dimensions.resize();
+        } else {
+          lenis.resize();
+        }
+      } else {
+        lenis.dimensions.resize();
+      }
+    };
+
+    const scheduleResize = () => {
+      if (isDisposed || resizeRafId !== null) return;
+      resizeRafId = window.requestAnimationFrame(() => {
+        resizeRafId = null;
+        syncDimensions();
+      });
+    };
+
+    const resizeObserver = new ResizeObserver(scheduleResize);
+    resizeObserver.observe(document.documentElement);
+    resizeObserver.observe(document.body);
+
+    window.addEventListener("load", scheduleResize);
+    document.fonts?.ready.then(scheduleResize).catch(() => {});
+
+    // Ensure initial dimensions match settled layout on mount / route change
+    const initialRafId = window.requestAnimationFrame(() => {
+      if (!isDisposed) {
+        lenis.resize();
+        lastScrollHeight = document.documentElement.scrollHeight;
+      }
     });
 
-    if (typeof document !== "undefined") {
-      if (document.body) resizeObserver.observe(document.body);
-      if (document.documentElement) resizeObserver.observe(document.documentElement);
-    }
-
-    const onWindowLoad = () => {
-      lenis.resize();
-      ScrollTrigger.refresh();
-    };
-    window.addEventListener("load", onWindowLoad);
-
-    // Staggered resizes to catch asynchronous fonts, 3D models, and images settling
-    const timers = [100, 300, 600, 1000, 2000, 3500].map((ms) =>
-      setTimeout(() => {
-        lenis.resize();
-        ScrollTrigger.refresh();
-      }, ms)
-    );
-
     return () => {
-      timers.forEach(clearTimeout);
-      resizeObserver.disconnect();
-      window.removeEventListener("load", onWindowLoad);
-      ScrollTrigger.removeEventListener("refresh", onScrollTriggerRefresh);
-      gsap.ticker.remove(tickerUpdate);
-      if (typeof window !== "undefined") {
-        delete (window as any).__lenis;
+      isDisposed = true;
+      window.cancelAnimationFrame(initialRafId);
+      if (resizeRafId !== null) {
+        window.cancelAnimationFrame(resizeRafId);
       }
+      resizeObserver.disconnect();
+      window.removeEventListener("load", scheduleResize);
+      ScrollTrigger.removeEventListener("refresh", handleScrollTriggerRefresh);
+      gsap.ticker.remove(handleTick);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 

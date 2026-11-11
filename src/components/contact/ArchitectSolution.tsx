@@ -590,7 +590,7 @@ export default function ArchitectSolution() {
             </button>
 
             {/* Slider Track Viewport (Shows 5 items on desktop initially) */}
-            <div className="flex-1 overflow-hidden py-2">
+            <div className="flex-1 min-w-0 overflow-hidden py-2">
               <div
                 className="flex transition-transform duration-500 ease-out"
                 style={{
