@@ -89,31 +89,31 @@ interface AwardBadge {
 
 const AWARD_BADGES: AwardBadge[] = [
   {
-    src: "/images/contact/Top-mobile-marketing-agency-2021.webp",
+    src: "/images/contact/1.webp",
     alt: "Featured on Mobile App Daily Top Mobile App Marketing Agencies 2021",
   },
   {
-    src: "/images/contact/Top-app-developers-1.webp",
+    src: "/images/contact/2.webp",
     alt: "Top App Developers Recognition",
   },
   {
-    src: "/images/contact/Top-web-development-company.webp",
+    src: "/images/contact/3.webp",
     alt: "Top Web Development Companies Recognition",
   },
   {
-    src: "/images/contact/Top-developers-on-clutch-2022.webp",
+    src: "/images/contact/4.webp",
     alt: "Top Developers Clutch India 2022 Recognition",
   },
   {
-    src: "/images/contact/SEO-service-company.webp",
+    src: "/images/contact/5.webp",
     alt: "Top SEO Service Companies India Software Suggest 2020",
   },
   {
-    src: "/images/contact/Top-digital-marketing-company-2026.webp",
+    src: "/images/contact/6.webp",
     alt: "iTRate.co Top Digital Marketing Company Recognition",
   },
   {
-    src: "/images/contact/Top-digital-marketing-company-Good-firms.webp",
+    src: "/images/contact/7.webp",
     alt: "GoodFirms Top Digital Marketing Company Recognition",
   },
 ];
