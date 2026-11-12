@@ -85,36 +85,52 @@ const SOLUTION_OPTIONS: SolutionOption[] = [
 interface AwardBadge {
   src: string;
   alt: string;
+  width: number;
+  height: number;
 }
 
 const AWARD_BADGES: AwardBadge[] = [
   {
-    src: "/images/contact/1.webp",
-    alt: "Featured on Mobile App Daily Top Mobile App Marketing Agencies 2021",
+    src: "/images/contact/1.png",
+    alt: "Top SEO Service Companies India — Software Suggest 2020",
+    width: 556,
+    height: 370,
   },
   {
-    src: "/images/contact/2.webp",
-    alt: "Top App Developers Recognition",
-  },
-  {
-    src: "/images/contact/3.webp",
-    alt: "Top Web Development Companies Recognition",
-  },
-  {
-    src: "/images/contact/4.webp",
-    alt: "Top Developers Clutch India 2022 Recognition",
-  },
-  {
-    src: "/images/contact/5.webp",
-    alt: "Top SEO Service Companies India Software Suggest 2020",
-  },
-  {
-    src: "/images/contact/6.webp",
+    src: "/images/contact/2.png",
     alt: "iTRate.co Top Digital Marketing Company Recognition",
+    width: 556,
+    height: 372,
   },
   {
-    src: "/images/contact/7.webp",
+    src: "/images/contact/3.png",
+    alt: "Top Developers Clutch India 2022 Recognition",
+    width: 556,
+    height: 372,
+  },
+  {
+    src: "/images/contact/4.png",
+    alt: "Featured on Mobile App Daily Top Mobile App Marketing Agencies 2021",
+    width: 544,
+    height: 370,
+  },
+  {
+    src: "/images/contact/5.png",
+    alt: "MobileAppDaily Top Mobile App Marketing Companies in India 2026",
+    width: 556,
+    height: 372,
+  },
+  {
+    src: "/images/contact/6.png",
     alt: "GoodFirms Top Digital Marketing Company Recognition",
+    width: 556,
+    height: 370,
+  },
+  {
+    src: "/images/contact/7.png",
+    alt: "Top Web Development Companies Recognition",
+    width: 582,
+    height: 370,
   },
 ];
 
@@ -199,7 +215,7 @@ export default function ArchitectSolution() {
   return (
     <div className="relative w-full">
       {/* Top Hero Section */}
-      <section className="relative w-full pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-[#160a04] text-white">
+      <section className="relative w-full pt-32 pb-48 sm:pb-56 md:pt-40 overflow-hidden bg-[#160a04] text-white">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -256,39 +272,44 @@ export default function ArchitectSolution() {
             </div>
           </div>
         </div>
+
+        {/* Smooth Perceptual Dark-to-Cream Dissolve (#160a04 -> #fdfaf6) */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-44 sm:h-52 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(253, 250, 246, 0) 0%, rgba(195, 165, 140, 0.025) 12%, rgba(205, 175, 150, 0.065) 24%, rgba(214, 186, 162, 0.135) 36%, rgba(222, 198, 176, 0.24) 48%, rgba(232, 212, 194, 0.39) 60%, rgba(241, 226, 212, 0.58) 72%, rgba(247, 237, 226, 0.76) 82%, rgba(251, 245, 238, 0.90) 90%, rgba(252, 248, 243, 0.965) 95%, #fdfaf6 100%)",
+          }}
+          aria-hidden="true"
+        />
       </section>
 
-      {/* Main Interactive Assessment & Form Section (Dark Obsidian + Webnox Solar Orange) */}
-      <section className="relative w-full py-20 sm:py-24 bg-[#0d0502] text-white border-t border-white/[0.08] overflow-hidden">
-        {/* Ambient Obsidian & Solar Orange Backdrop */}
+      {/* Main Interactive Assessment & Form Section (Light Warm Cream + Webnox Solar Orange) */}
+      <section className="relative w-full -mt-px pt-4 sm:pt-8 pb-20 sm:pb-24 bg-[#fdfaf6] text-neutral-900 overflow-x-clip">
+        {/* Subtle Warm Solar Orange Ambient Glow behind Assessment Header */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute left-1/2 top-4 sm:top-6 -translate-x-1/2 w-[780px] h-[340px] rounded-full pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 85% 65% at 50% 25%, #230f06 0%, #110603 55%, #0a0401 100%)",
-          }}
-          aria-hidden="true"
-        />
-        <div
-          className="absolute left-1/2 top-[48%] -translate-x-1/2 -translate-y-1/2 w-[780px] h-[520px] rounded-full pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(255, 94, 0, 0.14) 0%, rgba(255, 114, 48, 0.04) 45%, transparent 72%)",
-            filter: "blur(90px)",
+              "radial-gradient(ellipse at center, rgba(255, 114, 48, 0.06) 0%, transparent 70%)",
           }}
           aria-hidden="true"
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Centered Assessment Header */}
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.05] border border-[#ff5e00]/45 backdrop-blur-md text-[11px] font-semibold uppercase tracking-[0.18em] text-[#ff8935] shadow-[0_0_24px_rgba(255,94,0,0.2)] mb-5">
-              INTERACTIVE ASSESSMENT
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ff5e00]/[0.08] border border-[#ff5e00]/25 text-[#ff5e00] text-xs font-semibold uppercase tracking-[0.16em] mb-4 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ff5e00] animate-pulse" />
+              <span>Interactive Assessment</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-[44px] font-bold tracking-tight text-white leading-[1.15] mb-4">
-              Find the Right AI Solution for Your Business
+            <h2 className="text-3xl sm:text-4xl md:text-[44px] font-bold tracking-tight text-[#12141a] leading-[1.15] mb-4">
+              Find the Right AI Solution{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF7230] via-[#FF532B] to-[#FF8935]">
+                for Your Business
+              </span>
             </h2>
-            <p className="text-neutral-300 text-sm sm:text-base leading-relaxed font-light max-w-2xl mx-auto">
+            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed font-normal max-w-2xl mx-auto">
               Tell us where your business is today. We&apos;ll help you
               identify the right combination of AI, software, automation, and
               digital growth services.
@@ -307,16 +328,16 @@ export default function ArchitectSolution() {
                     type="button"
                     aria-pressed={isSelected}
                     onClick={() => toggleSolution(option.id)}
-                    className={`group relative rounded-2xl px-6 py-7 sm:px-6 sm:py-8 border text-center flex flex-col items-center justify-center transition-all duration-300 cursor-pointer select-none outline-none focus-visible:ring-2 focus-visible:ring-[#ff7230] ${
+                    className={`group relative rounded-2xl px-6 py-7 sm:px-6 sm:py-8 border text-center flex flex-col items-center justify-center transition-all duration-300 cursor-pointer select-none outline-none focus-visible:ring-2 focus-visible:ring-[#ff5e00] ${
                       isSelected
-                        ? "bg-gradient-to-b from-[#2b1409]/95 via-[#1c0d06]/95 to-[#140904]/95 border-[#ff7230] shadow-[0_0_28px_rgba(255,114,48,0.28),inset_0_0_22px_rgba(255,94,0,0.08)]"
-                        : "bg-white/[0.03] border-white/10 hover:border-[#ff7230]/45 hover:bg-white/[0.055] hover:shadow-[0_0_24px_rgba(255,94,0,0.1)]"
+                        ? "bg-gradient-to-b from-[#fffaf6] via-[#fff5ee] to-[#ffede0] border-[#ff5e00] shadow-[0_14px_32px_rgba(255,114,48,0.16),0_0_0_1px_rgba(255,94,0,0.15)]"
+                        : "bg-white border-neutral-200/90 shadow-[0_4px_20px_rgba(18,20,26,0.03)] hover:border-[#ff5e00]/45 hover:bg-[#fffaf5] hover:shadow-[0_12px_28px_rgba(255,114,48,0.1)]"
                     }`}
                   >
                     {/* Active Top-Right Checkmark Circle */}
                     {isSelected && (
                       <span
-                        className="absolute top-3.5 right-3.5 w-6 h-6 rounded-full bg-gradient-to-br from-[#FF7230] to-[#FF532B] text-white flex items-center justify-center shadow-[0_0_12px_rgba(255,94,0,0.65)]"
+                        className="absolute top-3.5 right-3.5 w-6 h-6 rounded-full bg-gradient-to-br from-[#FF7230] to-[#FF532B] text-white flex items-center justify-center shadow-[0_4px_12px_rgba(255,94,0,0.35)]"
                         aria-hidden="true"
                       >
                         <Check className="w-3.5 h-3.5 stroke-[3]" />
@@ -327,20 +348,20 @@ export default function ArchitectSolution() {
                     <div
                       className={`mb-3.5 transition-all duration-300 ${
                         isSelected
-                          ? "text-[#ff7230] drop-shadow-[0_0_12px_rgba(255,114,48,0.65)] scale-105"
-                          : "text-neutral-400 group-hover:text-[#ff8935]"
+                          ? "text-[#ff5e00] scale-105"
+                          : "text-neutral-500 group-hover:text-[#ff5e00]"
                       }`}
                     >
                       <option.icon className="w-8 h-8 stroke-[1.5]" />
                     </div>
 
                     {/* Title with Number Prefix */}
-                    <h3 className="text-[15px] sm:text-base font-bold text-white leading-snug mb-2">
+                    <h3 className="text-[15px] sm:text-base font-bold text-[#12141a] leading-snug mb-2">
                       <span
                         className={`font-mono mr-1.5 transition-colors ${
                           isSelected
-                            ? "text-[#ff8935]"
-                            : "text-neutral-400 group-hover:text-[#ff8935]"
+                            ? "text-[#ff5e00]"
+                            : "text-neutral-400 group-hover:text-[#ff5e00]"
                         }`}
                       >
                         {option.number}.
@@ -349,7 +370,7 @@ export default function ArchitectSolution() {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-xs sm:text-[13px] text-neutral-400 leading-relaxed max-w-[270px]">
+                    <p className="text-xs sm:text-[13px] text-neutral-600 leading-relaxed max-w-[270px]">
                       {option.description}
                     </p>
                   </button>
@@ -358,40 +379,40 @@ export default function ArchitectSolution() {
             </div>
 
             {/* Right Zone: Your Contact & Project Info Form Card */}
-            <div className="relative rounded-2xl p-6 sm:p-7 border border-[#ff7230]/35 bg-gradient-to-b from-[#1c0e08]/95 via-[#130905]/95 to-[#0d0502]/95 shadow-[0_0_48px_rgba(255,94,0,0.14)] backdrop-blur-md flex flex-col justify-between overflow-hidden">
+            <div className="relative rounded-2xl p-6 sm:p-7 border border-[#ff7230]/25 bg-white shadow-[0_16px_44px_rgba(18,20,26,0.06),0_4px_20px_rgba(255,114,48,0.08)] flex flex-col justify-between overflow-hidden">
               {/* Subtle Ambient Corner Glow */}
               <div
-                className="absolute -top-24 -right-24 w-56 h-56 rounded-full bg-[#ff5e00]/15 blur-[65px] pointer-events-none"
+                className="absolute -top-24 -right-24 w-56 h-56 rounded-full bg-[#ff7230]/[0.08] blur-[65px] pointer-events-none"
                 aria-hidden="true"
               />
 
               <div className="relative z-10 flex-1 flex flex-col">
                 <div className="mb-5">
                   <div className="flex items-center justify-between gap-3 mb-1.5">
-                    <h3 className="text-lg sm:text-xl font-bold text-white">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#12141a]">
                       Tell us about your requirement
                     </h3>
                     {selectedSolutions.length > 0 && (
-                      <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-[#ff5e00]/15 border border-[#ff5e00]/35 text-[#ff8935] whitespace-nowrap">
+                      <span className="text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-[#ff5e00]/[0.08] border border-[#ff5e00]/25 text-[#ff5e00] whitespace-nowrap">
                         {selectedSolutions.length} selected
                       </span>
                     )}
                   </div>
-                  <p className="text-xs sm:text-[13px] text-neutral-400 leading-relaxed">
+                  <p className="text-xs sm:text-[13px] text-neutral-600 leading-relaxed">
                     Share as much or as little detail as you have. You
                     don&apos;t need a fully defined project to get started.
                   </p>
                 </div>
 
                 {isSubmitted ? (
-                  <div className="flex-1 p-6 rounded-xl bg-white/[0.04] border border-[#ff7230]/30 text-center flex flex-col items-center justify-center">
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#FF7230] to-[#FF532B] text-white flex items-center justify-center mb-4 shadow-[0_0_24px_rgba(255,94,0,0.45)]">
+                  <div className="flex-1 p-6 rounded-xl bg-[#fcf8f2] border border-[#ff7230]/25 text-center flex flex-col items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#FF7230] to-[#FF532B] text-white flex items-center justify-center mb-4 shadow-[0_8px_24px_rgba(255,94,0,0.3)]">
                       <CheckCircle2 className="w-7 h-7" />
                     </div>
-                    <h4 className="text-lg sm:text-xl font-bold text-white mb-2">
+                    <h4 className="text-lg sm:text-xl font-bold text-[#12141a] mb-2">
                       Blueprint Request Received!
                     </h4>
-                    <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed mb-5">
+                    <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed mb-5">
                       Thank you. Our senior engineering team is reviewing your
                       requirements and will deliver your tailored AI solution
                       blueprint within 24 hours.
@@ -404,7 +425,7 @@ export default function ArchitectSolution() {
                           return opt ? (
                             <span
                               key={id}
-                              className="px-2.5 py-1 rounded-md bg-[#ff5e00]/15 border border-[#ff5e00]/30 text-[#ff8935] text-[11px] font-medium"
+                              className="px-2.5 py-1 rounded-md bg-[#ff5e00]/[0.08] border border-[#ff5e00]/25 text-[#ff5e00] text-[11px] font-medium"
                             >
                               {opt.number}. {opt.title}
                             </span>
@@ -416,7 +437,7 @@ export default function ArchitectSolution() {
                     <button
                       type="button"
                       onClick={handleReset}
-                      className="text-xs font-semibold text-[#ff8935] underline underline-offset-4 hover:text-white transition-colors cursor-pointer"
+                      className="text-xs font-semibold text-[#ff5e00] underline underline-offset-4 hover:text-[#12141a] transition-colors cursor-pointer"
                     >
                       Submit another requirement
                     </button>
@@ -431,7 +452,7 @@ export default function ArchitectSolution() {
                       <div>
                         <label
                           htmlFor="contact-full-name"
-                          className="block text-xs font-medium text-neutral-300 mb-1.5"
+                          className="block text-xs font-semibold text-neutral-700 mb-1.5"
                         >
                           Full Name
                         </label>
@@ -447,7 +468,7 @@ export default function ArchitectSolution() {
                               fullName: e.target.value,
                             })
                           }
-                          className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-neutral-500 text-sm focus:bg-white/[0.07] focus:border-[#ff7230] focus:ring-2 focus:ring-[#ff5e00]/25 outline-none transition-all"
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#fdfaf6] border border-neutral-200/90 text-[#12141a] placeholder:text-neutral-400 text-sm focus:bg-white focus:border-[#ff5e00] focus:ring-2 focus:ring-[#ff5e00]/15 outline-none transition-all"
                         />
                       </div>
 
@@ -455,7 +476,7 @@ export default function ArchitectSolution() {
                       <div>
                         <label
                           htmlFor="contact-work-email"
-                          className="block text-xs font-medium text-neutral-300 mb-1.5"
+                          className="block text-xs font-semibold text-neutral-700 mb-1.5"
                         >
                           Work Email
                         </label>
@@ -468,7 +489,7 @@ export default function ArchitectSolution() {
                           onChange={(e) =>
                             setFormData({ ...formData, email: e.target.value })
                           }
-                          className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-neutral-500 text-sm focus:bg-white/[0.07] focus:border-[#ff7230] focus:ring-2 focus:ring-[#ff5e00]/25 outline-none transition-all"
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#fdfaf6] border border-neutral-200/90 text-[#12141a] placeholder:text-neutral-400 text-sm focus:bg-white focus:border-[#ff5e00] focus:ring-2 focus:ring-[#ff5e00]/15 outline-none transition-all"
                         />
                       </div>
 
@@ -476,7 +497,7 @@ export default function ArchitectSolution() {
                       <div>
                         <label
                           htmlFor="contact-phone"
-                          className="block text-xs font-medium text-neutral-300 mb-1.5"
+                          className="block text-xs font-semibold text-neutral-700 mb-1.5"
                         >
                           Phone / WhatsApp
                         </label>
@@ -489,7 +510,7 @@ export default function ArchitectSolution() {
                           onChange={(e) =>
                             setFormData({ ...formData, phone: e.target.value })
                           }
-                          className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-neutral-500 text-sm focus:bg-white/[0.07] focus:border-[#ff7230] focus:ring-2 focus:ring-[#ff5e00]/25 outline-none transition-all"
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#fdfaf6] border border-neutral-200/90 text-[#12141a] placeholder:text-neutral-400 text-sm focus:bg-white focus:border-[#ff5e00] focus:ring-2 focus:ring-[#ff5e00]/15 outline-none transition-all"
                         />
                       </div>
 
@@ -497,7 +518,7 @@ export default function ArchitectSolution() {
                       <div>
                         <label
                           htmlFor="contact-requirements"
-                          className="block text-xs font-medium text-neutral-300 mb-1.5"
+                          className="block text-xs font-semibold text-neutral-700 mb-1.5"
                         >
                           Project Requirements
                         </label>
@@ -512,7 +533,7 @@ export default function ArchitectSolution() {
                               requirements: e.target.value,
                             })
                           }
-                          className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-neutral-500 text-sm focus:bg-white/[0.07] focus:border-[#ff7230] focus:ring-2 focus:ring-[#ff5e00]/25 outline-none transition-all resize-y"
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#fdfaf6] border border-neutral-200/90 text-[#12141a] placeholder:text-neutral-400 text-sm focus:bg-white focus:border-[#ff5e00] focus:ring-2 focus:ring-[#ff5e00]/15 outline-none transition-all resize-y"
                         />
                       </div>
                     </div>
@@ -522,7 +543,7 @@ export default function ArchitectSolution() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-[#FF7230] via-[#FF532B] to-[#FF8935] text-white font-semibold text-sm shadow-[0_8px_28px_rgba(255,94,0,0.35)] hover:shadow-[0_10px_36px_rgba(255,94,0,0.55)] hover:brightness-110 active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                        className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-[#FF7230] via-[#FF532B] to-[#FF8935] text-white font-semibold text-sm shadow-[0_8px_24px_rgba(255,94,0,0.28)] hover:shadow-[0_12px_32px_rgba(255,94,0,0.42)] hover:brightness-105 active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
                       >
                         {isSubmitting ? (
                           <span>Preparing Your Blueprint...</span>
@@ -535,8 +556,8 @@ export default function ArchitectSolution() {
                       </button>
 
                       {/* Confidentiality Trust Note */}
-                      <p className="text-xs text-neutral-400 flex items-center justify-center gap-1.5">
-                        <Lock className="w-3.5 h-3.5 text-[#ff7230]" />
+                      <p className="text-xs text-neutral-500 flex items-center justify-center gap-1.5">
+                        <Lock className="w-3.5 h-3.5 text-[#ff5e00]" />
                         <span>24-hr response • NDA protected</span>
                       </p>
                     </div>
@@ -549,14 +570,28 @@ export default function ArchitectSolution() {
       </section>
 
       {/* Recognition & Awards Banner Slider Section */}
-      <section className="relative w-full py-16 sm:py-20 bg-white border-t border-neutral-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="text-center mb-10 sm:mb-12">
-            <span className="inline-flex items-center px-3.5 py-1 rounded-full bg-[#1b4b9c]/[0.08] border border-[#1b4b9c]/20 text-[#1b4b9c] text-xs font-semibold uppercase tracking-[0.16em] mb-3">
-              Excellence in Every Milestone
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-[34px] font-bold tracking-tight text-[#1b4b9c]">
-              Recognized for Excellence, Chosen for Impact
+      <section className="relative w-full py-20 sm:py-24 bg-[#fcf8f2] text-neutral-900 border-t border-neutral-200/70 overflow-hidden">
+        {/* Subtle Warm Solar Orange Ambient Glow */}
+        <div
+          className="absolute left-1/2 top-0 -translate-x-1/2 w-[680px] h-[260px] rounded-full pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(255, 114, 48, 0.08) 0%, transparent 72%)",
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-12 sm:mb-14">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ff5e00]/[0.08] border border-[#ff5e00]/25 text-[#ff5e00] text-xs font-semibold uppercase tracking-[0.16em] mb-4 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ff5e00] animate-pulse" />
+              <span>Excellence in Every Milestone</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#12141a]">
+              Recognized for Excellence,{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF7230] via-[#FF532B] to-[#FF8935]">
+                Chosen for Impact
+              </span>
             </h2>
           </div>
 
@@ -584,7 +619,7 @@ export default function ArchitectSolution() {
               type="button"
               onClick={handlePrevAward}
               aria-label="Previous recognition badges"
-              className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-neutral-200 shadow-sm text-neutral-600 hover:text-[#1b4b9c] hover:border-[#1b4b9c]/40 hover:shadow-md flex items-center justify-center transition-all cursor-pointer"
+              className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-neutral-200/90 shadow-sm text-neutral-700 hover:text-[#ff5e00] hover:border-[#ff5e00]/45 hover:bg-[#ff5e00]/[0.06] hover:shadow-[0_6px_20px_rgba(255,114,48,0.16)] flex items-center justify-center transition-all cursor-pointer"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -599,19 +634,46 @@ export default function ArchitectSolution() {
                   }%)`,
                 }}
               >
-                {AWARD_BADGES.map((badge) => (
+                {AWARD_BADGES.map((badge, idx) => (
                   <div
                     key={badge.src}
                     className="w-1/2 sm:w-1/3 lg:w-1/5 flex-shrink-0 px-1.5 sm:px-2.5"
                   >
-                    <div className="transition-transform duration-300 hover:-translate-y-1.5">
+                    <div className="group relative aspect-[220/276] w-full flex items-center justify-center px-3 pt-3 pb-7 drop-shadow-[0_4px_12px_rgba(18,20,26,0.05)] hover:drop-shadow-[0_12px_24px_rgba(255,114,48,0.14)] transition-all duration-300 hover:-translate-y-1.5">
+                      <svg
+                        viewBox="0 0 220 276"
+                        preserveAspectRatio="none"
+                        className="absolute inset-0 w-full h-full pointer-events-none"
+                        aria-hidden="true"
+                      >
+                        <defs>
+                          <linearGradient
+                            id={`award-shield-grad-${idx}`}
+                            x1="0"
+                            y1="0"
+                            x2="0"
+                            y2="1"
+                          >
+                            <stop offset="0%" stopColor="#ffffff" />
+                            <stop offset="55%" stopColor="#fffaf5" />
+                            <stop offset="100%" stopColor="#ffe8d9" />
+                          </linearGradient>
+                        </defs>
+                        <path
+                          d="M 16 1 H 204 Q 219 1 219 16 V 222 Q 219 233 208 238 L 116 273 Q 110 275 104 273 L 12 238 Q 1 233 1 222 V 16 Q 1 1 16 1 Z"
+                          fill={`url(#award-shield-grad-${idx})`}
+                          stroke="#f0dfd3"
+                          strokeWidth="1"
+                          vectorEffect="nonScalingStroke"
+                        />
+                      </svg>
                       <Image
                         src={badge.src}
                         alt={badge.alt}
-                        width={889}
-                        height={1142}
+                        width={badge.width}
+                        height={badge.height}
                         sizes="(max-width: 640px) 42vw, (max-width: 1024px) 28vw, 220px"
-                        className="w-full h-auto object-contain select-none"
+                        className="relative z-10 w-full h-auto max-h-[75%] object-contain select-none"
                       />
                     </div>
                   </div>
@@ -624,7 +686,7 @@ export default function ArchitectSolution() {
               type="button"
               onClick={handleNextAward}
               aria-label="Next recognition badges"
-              className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-neutral-200 shadow-sm text-neutral-600 hover:text-[#1b4b9c] hover:border-[#1b4b9c]/40 hover:shadow-md flex items-center justify-center transition-all cursor-pointer"
+              className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-neutral-200/90 shadow-sm text-neutral-700 hover:text-[#ff5e00] hover:border-[#ff5e00]/45 hover:bg-[#ff5e00]/[0.06] hover:shadow-[0_6px_20px_rgba(255,114,48,0.16)] flex items-center justify-center transition-all cursor-pointer"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -632,7 +694,7 @@ export default function ArchitectSolution() {
 
           {/* Pagination Dots */}
           {maxAwardIndex > 0 && (
-            <div className="mt-6 flex items-center justify-center gap-2">
+            <div className="mt-7 flex items-center justify-center gap-2">
               {Array.from({ length: maxAwardIndex + 1 }).map((_, idx) => (
                 <button
                   key={idx}
@@ -642,8 +704,8 @@ export default function ArchitectSolution() {
                   aria-current={awardIndex === idx ? "true" : undefined}
                   className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                     awardIndex === idx
-                      ? "w-6 bg-[#1b4b9c]"
-                      : "w-2 bg-neutral-300 hover:bg-neutral-400"
+                      ? "w-7 bg-gradient-to-r from-[#FF7230] to-[#FF532B] shadow-[0_2px_8px_rgba(255,114,48,0.35)]"
+                      : "w-2 bg-neutral-300 hover:bg-[#ff7230]/50"
                   }`}
                 />
               ))}
