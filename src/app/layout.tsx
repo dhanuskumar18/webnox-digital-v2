@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Russo_One } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -9,6 +9,12 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const russoOne = Russo_One({
+  variable: "--font-russo-one",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -22,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} min-h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${russoOne.variable} min-h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col">{children}</body>
     </html>

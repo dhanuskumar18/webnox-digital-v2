@@ -1,15 +1,35 @@
+import { Marquee } from "@/components/ui/marquee-03-utils/marquee";
+
+const CLIENT_SLIDES = [
+  { name: "AJK College of Arts and Science", src: "/images/clients/AJK-college-of-arts-and-science.png" },
+  { name: "Bull Machine", src: "/images/clients/Bull-machine.png" },
+  { name: "Deeprintz", src: "/images/clients/Deeprintz.png" },
+  { name: "Divine World", src: "/images/clients/Divine-world.png" },
+  { name: "Elbuild", src: "/images/clients/elbuild.png" },
+  { name: "Indian Oil", src: "/images/clients/Indian-OIL.png" },
+  { name: "Investmates", src: "/images/clients/inverstmates.png" },
+  { name: "Kiscol TMT", src: "/images/clients/kiscol-tmt-logo.png" },
+  { name: "Mahindra Rise", src: "/images/clients/mahindra-rise.png" },
+  { name: "Native India Organics", src: "/images/clients/Native-india-organics.png" },
+  { name: "Officestac", src: "/images/clients/office-stac.png" },
+  { name: "Rapid 3D Technologies", src: "/images/clients/rapid-3d-technologies.png" },
+  { name: "Senco Water Technologies", src: "/images/clients/senco-india.jpg" },
+  { name: "SNS College", src: "/images/clients/SNS-college.png" },
+  { name: "Surprise Machi", src: "/images/clients/Surprise-machi.png" },
+  { name: "TaxiBy", src: "/images/clients/Taxiby-taxi.png" },
+];
+
 export default function WhoWeAre() {
-  const CLIENT_LOGOS = [
-    { name: "Bull Machine", src: "/images/Frame 5.png" },
-    { name: "Onroadz", src: "/images/Frame 6.png" },
-    { name: "Aura Health", src: "/images/Frame 7.png" },
-    { name: "Nexus Flow", src: "/images/Frame 8.png" },
-    { name: "Volt Logistics", src: "/images/Frame 5.png" },
-    { name: "Rathz HRMS", src: "/images/Frame 6.png" },
-  ];
 
   return (
-    <section className="w-full bg-[#0a0806] text-white py-24 sm:py-32 px-6 sm:px-8">
+    <section
+      className="w-full text-white py-24 sm:py-32 px-6 sm:px-8"
+      style={{
+        backgroundColor: "#0a0806",
+        backgroundImage:
+          "linear-gradient(to bottom, rgba(10, 8, 6, 0) 65%, #0a0806 100%), radial-gradient(65% 55% at 22% 8%, rgba(122, 52, 16, 0.72) 0%, rgba(74, 30, 10, 0.35) 45%, rgba(20, 11, 6, 0) 78%), linear-gradient(152.18deg, #60290B -16.91%, #261209 42%, #140B06 82%, #0a0806 100%)",
+      }}
+    >
       <div className="max-w-7xl mx-auto flex flex-col">
         {/* Top Content */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16 mb-20">
@@ -41,22 +61,27 @@ export default function WhoWeAre() {
         </div>
 
         {/* Trusted by Businesses Section */}
-        <div className="w-full py-12 border-y border-white/10 mb-20">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <h3 className="text-sm font-semibold tracking-wider text-neutral-400 uppercase shrink-0 text-center md:text-left">
+        <div className="w-full py-12 border-b border-white/90 mb-20">
+          <div className="flex flex-col items-center gap-8">
+            <h3 className="text-sm font-semibold tracking-wider text-neutral-400 uppercase text-center">
               Trusted by Businesses We Have Worked With
             </h3>
-            <div className="flex flex-wrap items-center justify-center md:justify-end gap-8 sm:gap-12 opacity-80">
-              {CLIENT_LOGOS.map((client, idx) => (
-                <div key={idx} className="flex items-center gap-2.5 grayscale hover:grayscale-0 transition-all duration-300">
-                  <img
-                    src={client.src}
-                    alt={client.name}
-                    className="w-7 h-7 rounded-lg object-contain"
-                  />
-                  <span className="text-sm font-medium text-neutral-300">{client.name}</span>
-                </div>
-              ))}
+            <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+              <Marquee pauseOnHover repeat={2} className="p-0 [--duration:35s] [--gap:1.25rem]">
+                {CLIENT_SLIDES.map((client) => (
+                  <div
+                    key={client.src}
+                    className="flex items-center justify-center h-20 w-48 shrink-0 rounded-xl bg-[#fdfaf6] border border-white/10 px-4 py-2.5 transition-all duration-300 hover:border-[#ff5e00]/60 hover:scale-[1.03]"
+                  >
+                    <img
+                      src={client.src}
+                      alt={client.name}
+                      className="max-h-full max-w-full w-auto h-auto object-contain rounded-md"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </Marquee>
             </div>
           </div>
         </div>
@@ -73,42 +98,31 @@ export default function WhoWeAre() {
           </div>
 
           {/* Stats Row - 5 Metrics */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 text-center">
-            {/* Stat 1 */}
-            <div className="flex flex-col items-center bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 transition-all duration-300 hover:border-[#ff5e00]/50 hover:bg-white/[0.05]">
-              <span className="text-4xl sm:text-5xl font-extrabold text-[#ff5e00] mb-3">15+</span>
-              <span className="text-neutral-300 text-xs sm:text-sm font-medium leading-snug">
-                Years of<br />Experience
-              </span>
-            </div>
-            {/* Stat 2 */}
-            <div className="flex flex-col items-center bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 transition-all duration-300 hover:border-[#ff5e00]/50 hover:bg-white/[0.05]">
-              <span className="text-4xl sm:text-5xl font-extrabold text-[#ff5e00] mb-3">2,570+</span>
-              <span className="text-neutral-300 text-xs sm:text-sm font-medium leading-snug">
-                Clients<br />Worldwide
-              </span>
-            </div>
-            {/* Stat 3 */}
-            <div className="flex flex-col items-center bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 transition-all duration-300 hover:border-[#ff5e00]/50 hover:bg-white/[0.05]">
-              <span className="text-4xl sm:text-5xl font-extrabold text-[#ff5e00] mb-3">20+</span>
-              <span className="text-neutral-300 text-xs sm:text-sm font-medium leading-snug">
-                Own<br />Products
-              </span>
-            </div>
-            {/* Stat 4 */}
-            <div className="flex flex-col items-center bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 transition-all duration-300 hover:border-[#ff5e00]/50 hover:bg-white/[0.05]">
-              <span className="text-4xl sm:text-5xl font-extrabold text-[#ff5e00] mb-3">20+</span>
-              <span className="text-neutral-300 text-xs sm:text-sm font-medium leading-snug">
-                Countries<br />Served
-              </span>
-            </div>
-            {/* Stat 5 */}
-            <div className="flex flex-col items-center bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 transition-all duration-300 hover:border-[#ff5e00]/50 hover:bg-white/[0.05] col-span-2 md:col-span-1">
-              <span className="text-4xl sm:text-5xl font-extrabold text-[#ff5e00] mb-3">15+</span>
-              <span className="text-neutral-300 text-xs sm:text-sm font-medium leading-snug">
-                Awards and<br />Recognition
-              </span>
-            </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 text-center">
+            {[
+              { value: "15+", line1: "Years of", line2: "Experience" },
+              { value: "2,570+", line1: "Clients", line2: "Worldwide" },
+              { value: "20+", line1: "Own", line2: "Products" },
+              { value: "20+", line1: "Countries", line2: "Served" },
+              { value: "15+", line1: "Awards and", line2: "Recognition", spanFullMobile: true },
+            ].map((stat, idx) => (
+              <div
+                key={idx}
+                className={`flex flex-col items-center ${stat.spanFullMobile ? "col-span-2 sm:col-span-1" : ""}`}
+              >
+                <span
+                  className="text-4xl sm:text-5xl text-[#ff6b2b] mb-3 tracking-wide"
+                  style={{ fontFamily: "var(--font-russo-one), sans-serif" }}
+                >
+                  {stat.value}
+                </span>
+                <span className="text-neutral-200 text-xs sm:text-sm font-normal leading-snug">
+                  {stat.line1}
+                  <br />
+                  {stat.line2}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

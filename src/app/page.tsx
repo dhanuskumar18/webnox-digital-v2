@@ -35,7 +35,8 @@ export default function Home() {
 
         {/* 2. AI-Native Engineering Built on 15+ Years & The Numbers Behind Our Journey */}
         <WhoWeAre />
-
+{/* 10. We Don’t Just Build for Clients. We Build Our Own Products. */}
+        <Services />
         {/* 3. AI-Native Services Across Technology and Digital Growth */}
         <AiNativeServices />
 

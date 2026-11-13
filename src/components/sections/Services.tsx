@@ -805,7 +805,13 @@ export default function Services() {
       }`}
     >
       {/* Radial Gradient Background */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(140,50,10,0.5)_0%,_rgba(10,8,6,1)_70%)]"></div>
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse 115% 85% at 50% 100%, rgba(255, 114, 48, 0.78) 0%, rgba(255, 94, 0, 0.48) 32%, rgba(168, 56, 12, 0.24) 58%, rgba(10, 8, 6, 1) 88%)",
+        }}
+      ></div>
       
       <div className={`relative z-10 w-full ${orbitMode ? "h-full" : "max-w-7xl"} mx-auto flex flex-col items-center justify-center`}>
         
