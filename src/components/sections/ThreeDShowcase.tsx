@@ -42,7 +42,7 @@ export default function ThreeDShowcase() {
       gsap.set(cameraRef.current!.position, { x: 0, y: 0.2, z: 3.67 });
       
       // We also ensure innerRef is full size and square initially
-      gsap.set(innerRef.current, { scale: 1, yPercent: 0, borderRadius: "0px", willChange: "transform, border-radius" });
+      gsap.set(innerRef.current, { scale: 1, yPercent: 0, borderRadius: "0px" });
 
       // Initial state for texts
       gsap.set([topTextRef.current, bottomTextRef.current], { opacity: 0, y: 30 });
