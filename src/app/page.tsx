@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SmoothScroll from "@/components/SmoothScroll";
+import Navbar from "@/components/ai-services/Navbar";
 import ThreeDShowcase from "@/components/sections/ThreeDShowcase";
 import WhoWeAre from "@/components/sections/WhoWeAre";
 import AiNativeServices from "@/components/sections/AiNativeServices";
@@ -26,38 +27,8 @@ export default function Home() {
   return (
     <SmoothScroll>
       <main className="w-full bg-[#fdfaf6]">
-        {/* Navigation placeholder */}
-        <nav className="absolute top-0 w-full z-50 flex justify-between items-center px-8 py-6">
-          <div className="text-xl font-bold tracking-tighter text-neutral-900">
-            WEBNOX<span className="text-[#ff5e00]">.</span>
-          </div>
-          <div className="flex items-center gap-6">
-            <a
-              href="#ai-services"
-              className="text-xs uppercase tracking-widest font-semibold hover:text-[#ff5e00] transition-colors hidden sm:inline-block"
-            >
-              Services
-            </a>
-            <a
-              href="#solutions"
-              className="text-xs uppercase tracking-widest font-semibold hover:text-[#ff5e00] transition-colors hidden sm:inline-block"
-            >
-              Systems
-            </a>
-            <a
-              href="#industries"
-              className="text-xs uppercase tracking-widest font-semibold hover:text-[#ff5e00] transition-colors hidden sm:inline-block"
-            >
-              Industries
-            </a>
-            <a
-              href="#contact"
-              className="text-xs uppercase tracking-widest font-semibold bg-[#140803] text-white px-5 py-2 rounded-full hover:bg-[#ff5e00] transition-colors shadow-sm"
-            >
-              Talk to Experts
-            </a>
-          </div>
-        </nav>
+        {/* Navigation Bar */}
+        <Navbar />
 
         {/* 1. Hero & Measurable AI Productivity */}
         <ThreeDShowcase />
