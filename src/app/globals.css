@@ -199,7 +199,9 @@ body {
   overflow: hidden;
   box-shadow: 0 15px 50px var(--our-orange-glow), inset 0 2.5px 2.5px rgba(255, 255, 255, 0.35);
   user-select: none;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
   vertical-align: middle;
   margin: 0 25px;
 }
@@ -217,6 +219,19 @@ body {
   align-items: center;
   z-index: 2;
   pointer-events: none;
+}
+
+.capsule-hand .hand-asset {
+  will-change: transform;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.creation-capsule:hover .capsule-hand.human-hand .hand-asset {
+  transform: translateX(26px);
+}
+
+.creation-capsule:hover .capsule-hand.robo-hand .hand-asset {
+  transform: translateX(-20px);
 }
 
 .capsule-hand.human-hand {
@@ -260,6 +275,11 @@ body {
   width: auto;
   object-fit: contain;
   display: block;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.creation-capsule:hover .logo-glow-asset {
+  transform: scale(1.1);
 }
 
 /* Hero Description */

@@ -206,7 +206,7 @@ const HeroScreenContent = ({ pxHeight }: { pxHeight: number }) => {
       width: '130px',
       margin: '0px 25px',
       filter: 'blur(0px)',
-      clearProps: 'filter',
+      clearProps: 'filter,transform',
       duration: 0.6,
       ease: 'back.out(1.5)',
     });
