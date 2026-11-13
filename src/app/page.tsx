@@ -35,43 +35,50 @@ export default function Home() {
 
         {/* 2. AI-Native Engineering Built on 15+ Years & The Numbers Behind Our Journey */}
         <WhoWeAre />
-{/* 10. We Don’t Just Build for Clients. We Build Our Own Products. */}
         <Services />
         {/* 3. AI-Native Services Across Technology and Digital Growth */}
-        <AiNativeServices />
-
-        {/* 4. AI-Native Systems We Build & Operate */}
-        <Solutions />
-
-        {/* 5. What Businesses Say About Webnox AI Solutions */}
-        <Testimonials />
-
-        {/* 6. AI-Native Company vs. Traditional AI Company */}
-        <NotTypicalAgency />
-
-        {/* 7. Why Choose Webnox as Your AI-Native Partner */}
-        <WhyChooseUs />
+        {/* <AiNativeServices /> */}
 
         {/* 8. Build, Launch and Grow With an AI-Native Partner */}
         <ConversionCta />
-
-        {/* 9. From Business Requirement to Delivery Our Process */}
-        <AiDevelopmentProcess />
-
-        {/* 10. We Don’t Just Build for Clients. We Build Our Own Products. */}
-        <Services />
-
+        
         {/* 11. Technologies Powering Our AI and Software Solutions */}
         <TechStackTable />
+        {/* 4. AI-Native Systems We Build & Operate */}
+        <Solutions />
+{/* 7. Why Choose Webnox as Your AI-Native Partner */}
+        <WhyChooseUs />
+          {/* 12. AI-Native Solutions for Every Industry */}
+        <IndustrySolutions />
+         <AiDevelopmentProcess />
+       
+
+        {/* 6. AI-Native Company vs. Traditional AI Company */}
+        <NotTypicalAgency />
+ {/* 5. What Businesses Say About Webnox AI Solutions */}
+        <Testimonials />
+        {/* 14. Frequently Asked Questions In Our AI Native Company */}
+        <Faq />
+        {/* 7. Why Choose Webnox as Your AI-Native Partner */}
+        {/* <WhyChooseUs /> */}
+
+        {/* 8. Build, Launch and Grow With an AI-Native Partner */}
+        {/* <ConversionCta /> */}
+
+        {/* 9. From Business Requirement to Delivery Our Process */}
+        {/* <AiDevelopmentProcess /> */}
+
+        {/* 10. We Don’t Just Build for Clients. We Build Our Own Products. */}
+        {/* <Services /> */}
+
 
         {/* 12. AI-Native Solutions for Every Industry */}
-        <IndustrySolutions />
+        {/* <IndustrySolutions /> */}
 
         {/* 13. Build Your Next AI Product with Webnox Digital */}
         <LetsGrowTogether />
 
-        {/* 14. Frequently Asked Questions In Our AI Native Company */}
-        <Faq />
+        
 
         {/* 15. Footer */}
         <Footer />

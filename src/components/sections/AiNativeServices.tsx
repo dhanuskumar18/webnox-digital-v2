@@ -23,7 +23,7 @@ interface ServiceItem {
   icon: React.ReactNode;
 }
 
-const SERVICES_DATA: ServiceItem[] = [
+export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "ai-development",
     number: "01",
@@ -133,9 +133,9 @@ export default function AiNativeServices() {
               Technology and Digital Growth
             </span>
           </h2>
-          <p className="mt-4 text-neutral-600 text-sm sm:text-base md:text-[17px] leading-relaxed max-w-2xl mx-auto">
+          {/* <p className="mt-4 text-neutral-600 text-sm sm:text-base md:text-[17px] leading-relaxed max-w-2xl mx-auto">
             From proof-of-concept to resilient production deployments, we turn business ideas into intelligent, connected digital solutions.
-          </p>
+          </p> */}
         </div>
 
         {/* 9 Services Grid */}

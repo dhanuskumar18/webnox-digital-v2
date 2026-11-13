@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight } from "lucide-react";
+import { SERVICES_DATA } from "@/components/sections/AiNativeServices";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,61 +59,6 @@ const COLLAGE = [
 ];
 const PIN_SCROLL_LENGTH = 5500; // px of scrolling spent inside the pinned section (circle expand + horizontal card scroll)
 const CIRCLE_BASE = 132;
-
-// Beyond Standard Services cards data (revealed as the white circle expands)
-const BEYOND_CARDS = [
-  {
-    title: "AI - Native Services",
-    subtitle: "AI development services help businesses build intelligent software",
-    bottomHighlight: "And digital products",
-    bottomText: "by integrating artificial intelligence into applications, workflows, and business processes.",
-    glow: (
-      <div className="absolute -top-10 -left-10 w-52 h-52 rounded-full bg-gradient-to-br from-[#ff6a00]/80 via-[#ff9238]/50 to-transparent blur-3xl pointer-events-none" />
-    ),
-  },
-  {
-    title: "Digital Engineering",
-    subtitle: "Software development services help businesses design, build,",
-    bottomHighlight: "And maintain reliable digital products",
-    bottomText: "that support operations, customer experiences, and evolving technology requirements.",
-    glow: (
-      <div className="relative flex items-center justify-center">
-        <div className="absolute w-44 h-44 rounded-full bg-gradient-to-tr from-[#ff5e00]/70 via-[#ffa04d]/40 to-transparent blur-2xl pointer-events-none" />
-        <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-[#ff7722] to-[#ffaa55] opacity-85 blur-lg transform rotate-12" />
-      </div>
-    ),
-  },
-  {
-    title: "AI Powered Growth",
-    subtitle: "AI-powered growth combines artificial intelligence with",
-    bottomHighlight: "Search technologies, automation",
-    bottomText: "to improve online visibility, user engagement and marketing outcomes.",
-    glow: (
-      <div className="absolute -right-8 top-6 w-48 h-48 rounded-full bg-gradient-to-tl from-[#ff6e05]/80 via-[#ff9c45]/50 to-transparent blur-3xl pointer-events-none" />
-    ),
-  },
-  {
-    title: "Enterprise Cloud Platforms",
-    subtitle: "Modern cloud architectures engineered for high resilience,",
-    bottomHighlight: "And mission-critical scale",
-    bottomText: "delivering zero-downtime performance, security, and continuous cost efficiency.",
-    glow: (
-      <div className="relative flex items-center justify-center">
-        <div className="absolute w-48 h-48 rounded-full bg-gradient-to-b from-[#ff5e00]/70 via-[#ffaa66]/40 to-transparent blur-2xl pointer-events-none" />
-        <div className="w-28 h-20 rounded-3xl bg-gradient-to-tr from-[#ff6a00] to-[#ffbe7a] opacity-80 blur-xl -rotate-6" />
-      </div>
-    ),
-  },
-  {
-    title: "Intelligent UI/UX Design",
-    subtitle: "Human-centric digital product experiences crafted with",
-    bottomHighlight: "Precision interaction design",
-    bottomText: "that captivate users, maximize engagement, and elevate brand equity.",
-    glow: (
-      <div className="absolute -bottom-8 -left-6 w-52 h-52 rounded-full bg-gradient-to-tr from-[#ff6600]/80 via-[#ffa85c]/45 to-transparent blur-3xl pointer-events-none" />
-    ),
-  },
-];
 
 export default function Services() {
   const containerRef = useRef<HTMLElement>(null);
@@ -1021,50 +968,84 @@ export default function Services() {
 
       </div>
 
-      {/* Beyond Standard Services - Revealed when white circle expands, pinned with horizontal card scrolling */}
+      {/* AI-Native Services - Revealed when white circle expands, pinned with horizontal card scrolling */}
       <div
         ref={beyondOverlayRef}
         className="absolute inset-0 w-full h-full flex flex-col justify-between items-center py-5 sm:py-7 md:py-8 bg-[#fcf8f2] pointer-events-none opacity-0 z-[250] select-none overflow-hidden"
       >
         {/* Header */}
-        <div className="w-full text-center px-4 pt-1 sm:pt-2 flex-shrink-0">
-          <h2 className="text-2xl sm:text-3xl md:text-[34px] lg:text-[38px] font-semibold text-[#1c1b18] tracking-tight leading-snug max-w-3xl mx-auto">
-            <span>Beyond standard services. </span>
-            <span className="text-[#73716d] font-normal">Custom AI engines, smart platforms, and digital products</span>
+        <div className="w-full text-center px-4 pt-1 sm:pt-2 flex-shrink-0 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/80 text-[#ff5e00] text-xs font-semibold uppercase tracking-wider mb-3 shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#ff5e00] animate-pulse" />
+            Core Capabilities
+          </div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#140803] leading-[1.18]">
+            AI-Native Services Across{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5e00] via-[#ff7230] to-[#ff8f45]">
+              Technology and Digital Growth
+            </span>
           </h2>
+          <p className="mt-2.5 text-neutral-600 text-xs sm:text-sm md:text-[15px] leading-relaxed max-w-2xl mx-auto">
+            From proof-of-concept to resilient production deployments, we turn business ideas into intelligent, connected digital solutions.
+          </p>
         </div>
 
         {/* Horizontal Scrolling Cards Track */}
-        <div className="w-full overflow-hidden flex-1 flex items-center my-auto py-1 sm:py-2">
+        <div className="w-full overflow-hidden flex-1 flex items-center my-auto py-2 sm:py-3">
           <div
             ref={cardsTrackRef}
-            className="flex items-center gap-6 sm:gap-8 md:gap-10 px-8 sm:px-14 md:px-20 will-change-transform"
+            className="flex items-stretch gap-6 sm:gap-8 px-8 sm:px-14 md:px-20 will-change-transform"
             style={{ width: "max-content" }}
           >
-            {BEYOND_CARDS.map((card, idx) => (
+            {SERVICES_DATA.map((service) => (
               <div
-                key={idx}
-                className="flex flex-col items-center flex-shrink-0 w-[310px] sm:w-[350px] md:w-[380px]"
+                key={service.id}
+                className="group relative flex-shrink-0 w-[310px] sm:w-[350px] md:w-[380px] bg-white rounded-[26px] p-6 sm:p-7 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_40px_rgba(255,94,0,0.1)] hover:border-[#ff5e00]/40 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
-                {/* Top Text Header */}
-                <div className="text-center mb-2.5 sm:mb-3 h-[38px] sm:h-[42px] flex items-center justify-center px-2">
-                  <p className="text-xs sm:text-[13px] md:text-sm leading-snug text-neutral-600 max-w-[340px]">
-                    <strong className="font-semibold text-neutral-900">{card.title}. </strong>
-                    {card.subtitle}
+                {/* Subtle Ambient Hover Glow */}
+                <div className="absolute top-0 right-0 w-36 h-36 bg-[radial-gradient(circle_at_top_right,rgba(255,94,0,0.12),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                <div>
+                  {/* Card Top: Number + Icon */}
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-11 h-11 rounded-xl bg-orange-50/80 border border-orange-200/60 flex items-center justify-center shadow-sm group-hover:scale-105 group-hover:bg-[#ff5e00] transition-all duration-300">
+                      <span className="transition-colors duration-300 group-hover:text-white [&>svg]:group-hover:text-white">
+                        {service.icon}
+                      </span>
+                    </div>
+                    <span className="font-mono text-xs font-bold text-neutral-400 tracking-wider">
+                      {service.number}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-lg sm:text-xl font-bold text-[#140803] tracking-tight leading-snug mb-3 group-hover:text-[#ff5e00] transition-colors duration-200">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
+                    {service.description}
                   </p>
                 </div>
 
-                {/* Card Visual Graphic */}
-                <div className="w-full h-[165px] sm:h-[185px] md:h-[205px] rounded-[24px] sm:rounded-[30px] bg-[#f5ede4] border border-black/[0.04] shadow-[0_4px_24px_rgba(0,0,0,0.03)] relative overflow-hidden flex items-center justify-center p-6 transition-transform duration-300 hover:scale-[1.02]">
-                  {card.glow}
-                </div>
-
-                {/* Bottom Text Footer */}
-                <div className="text-center mt-2.5 sm:mt-3 h-[42px] sm:h-[48px] flex items-center justify-center px-2">
-                  <p className="text-xs sm:text-[13px] md:text-sm leading-snug text-neutral-600 max-w-[340px]">
-                    <strong className="font-semibold text-neutral-900">{card.bottomHighlight} </strong>
-                    {card.bottomText}
-                  </p>
+                {/* Card Footer: Explore Link Button */}
+                <div className="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const contactEl =
+                        document.getElementById("contact") ||
+                        document.querySelector("section:last-of-type");
+                      contactEl?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="inline-flex items-center gap-2 text-xs sm:text-[13px] font-semibold text-[#140803] group-hover:text-[#ff5e00] transition-colors duration-200 cursor-pointer"
+                  >
+                    <span>{service.ctaText} →</span>
+                  </button>
+                  <div className="w-7 h-7 rounded-full bg-neutral-100 group-hover:bg-[#ff5e00] flex items-center justify-center text-neutral-600 group-hover:text-white transition-all duration-300 group-hover:translate-x-0.5">
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
                 </div>
               </div>
             ))}
@@ -1072,7 +1053,7 @@ export default function Services() {
         </div>
 
         {/* Bottom Action Button */}
-        <div className="w-full flex justify-center pt-2 pb-1 sm:pb-3 flex-shrink-0">
+        <div className="w-full flex justify-center pt-1 pb-1 sm:pb-2 flex-shrink-0">
           <button
             onClick={() => {
               const contactEl = document.getElementById("contact") || document.querySelector("section:last-of-type");
