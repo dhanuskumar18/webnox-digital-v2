@@ -70,6 +70,7 @@ export default function Services() {
 
   const [orbitMode, setOrbitMode] = useState(false);
   const orbitModeRef = useRef(false);
+  const pinReadyRef = useRef(false);
   const [isGallery, setIsGallery] = useState(false);
   const isGalleryRef = useRef(false);
   
@@ -407,6 +408,10 @@ export default function Services() {
 
   // ---- Pin the section while orbiting; scroll collapses cards -> circle -> white -> expands ----
   function teardownPin() {
+    pinReadyRef.current = false;
+    if (!orbitModeRef.current) {
+      window.dispatchEvent(new CustomEvent("webnox:labs-locked"));
+    }
     pinScroll.current?.kill();
     pinScroll.current = null;
     const tl = pinTl.current;
@@ -497,6 +502,9 @@ export default function Services() {
           // 6) Brief pause at the end of the cards before unpinning to the next section
           .to({}, { duration: 0.4 }, 7.0);
       }
+
+      pinReadyRef.current = true;
+      window.dispatchEvent(new CustomEvent("webnox:labs-unlocked"));
     };
 
     // bring the section to the center of the viewport first so the pin starts at progress 0
@@ -507,7 +515,10 @@ export default function Services() {
       y: target,
       duration: 0.7,
       ease: "power2.inOut",
-      onUpdate: () => window.scrollTo(0, proxy.y),
+      onUpdate: () => {
+        (window as unknown as { __webnoxLenis?: { scrollTo: (t: number, o?: { immediate?: boolean; force?: boolean }) => void } }).__webnoxLenis?.scrollTo(proxy.y, { immediate: true, force: true });
+        window.scrollTo(0, proxy.y);
+      },
       onComplete: build,
     });
   }
@@ -558,6 +569,97 @@ export default function Services() {
     return () => {
       window.removeEventListener("wheel", onScrollOrWheel);
       window.removeEventListener("scroll", onScrollOrWheel);
+    };
+  }, []);
+
+  // Lock downward scroll at the bottom of Services until "Explore Labs" is clicked
+  useEffect(() => {
+    let isClamping = false;
+    let touchStartY = 0;
+
+    type LenisHandle = {
+      scrollTo: (target: number, opts?: { immediate?: boolean; force?: boolean }) => void;
+    };
+
+    const getLenis = () =>
+      (window as unknown as { __webnoxLenis?: LenisHandle }).__webnoxLenis;
+
+    const getLockY = () => {
+      const section = containerRef.current;
+      if (!section) return Infinity;
+      const rect = section.getBoundingClientRect();
+      return Math.max(0, Math.round(window.scrollY + rect.bottom - window.innerHeight));
+    };
+
+    const clampScroll = () => {
+      if (pinReadyRef.current || isClamping) return;
+      const lockY = getLockY();
+      if (window.scrollY > lockY) {
+        isClamping = true;
+        getLenis()?.scrollTo(lockY, { immediate: true, force: true });
+        window.scrollTo(0, lockY);
+        requestAnimationFrame(() => {
+          isClamping = false;
+        });
+      }
+    };
+
+    const onWheel = (e: WheelEvent) => {
+      if (pinReadyRef.current) return;
+      const lockY = getLockY();
+      if (e.deltaY > 0 && window.scrollY >= lockY - 2) {
+        e.preventDefault();
+        e.stopPropagation();
+        clampScroll();
+      }
+    };
+
+    const onTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0]?.clientY ?? 0;
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (pinReadyRef.current) return;
+      const currentY = e.touches[0]?.clientY ?? touchStartY;
+      const deltaY = touchStartY - currentY;
+      const lockY = getLockY();
+      if (deltaY > 0 && window.scrollY >= lockY - 2) {
+        e.preventDefault();
+        e.stopPropagation();
+        clampScroll();
+      }
+    };
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (pinReadyRef.current) return;
+      const target = e.target as HTMLElement | null;
+      if (target && target.closest("input, textarea, select, [contenteditable='true']")) return;
+      const isDownKey =
+        e.key === "ArrowDown" ||
+        e.key === "PageDown" ||
+        e.key === "End" ||
+        (e.key === " " && !e.shiftKey);
+      if (!isDownKey) return;
+      const lockY = getLockY();
+      if (window.scrollY >= lockY - 2) {
+        e.preventDefault();
+        e.stopPropagation();
+        clampScroll();
+      }
+    };
+
+    window.addEventListener("wheel", onWheel, { passive: false, capture: true });
+    window.addEventListener("touchstart", onTouchStart, { passive: true, capture: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: false, capture: true });
+    window.addEventListener("keydown", onKeyDown, { capture: true });
+    window.addEventListener("scroll", clampScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("wheel", onWheel, true);
+      window.removeEventListener("touchstart", onTouchStart, true);
+      window.removeEventListener("touchmove", onTouchMove, true);
+      window.removeEventListener("keydown", onKeyDown, true);
+      window.removeEventListener("scroll", clampScroll);
     };
   }, []);
 
@@ -748,7 +850,7 @@ export default function Services() {
       ref={containerRef}
       onClick={handleBackgroundClick}
       className={`relative w-full overflow-hidden flex flex-col items-center justify-center bg-[#0a0806] transition-[padding,height] duration-700 ${
-        orbitMode ? "h-screen min-h-screen py-0" : "py-32"
+        orbitMode ? "h-screen min-h-screen py-0" : "min-h-screen py-32"
       }`}
     >
       {/* Radial Gradient Background */}
@@ -950,7 +1052,7 @@ export default function Services() {
 
         {/* Heading + button: hidden while the cards are orbiting */}
         <div
-          className={`flex flex-col items-center w-full overflow-hidden transition-all duration-700 ease-in-out ${orbitMode ? "max-h-0 opacity-0 pointer-events-none" : "max-h-[500px] opacity-100"}`}
+          className={`flex flex-col items-center w-full overflow-hidden transition-all duration-700 ease-in-out ${orbitMode ? "max-h-0 opacity-0 pointer-events-none" : "max-h-[560px] pb-6 opacity-100"}`}
           aria-hidden={orbitMode}
         >
           <h2 className="text-3xl md:text-5xl font-medium text-white text-center mb-10 leading-[1.25] tracking-tight">
@@ -958,11 +1060,31 @@ export default function Services() {
             We Build Our <span className="text-[#ff5e00]">Own Products.</span>
           </h2>
 
-          <button onClick={toggleOrbit} tabIndex={orbitMode ? -1 : 0} className="bg-white hover:bg-neutral-100 text-black rounded-full pl-6 pr-2 py-2 mb-2 flex items-center gap-4 transition-transform duration-300 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,94,0,0.15)] group">
-            <span className="font-semibold text-sm">Explore Labs</span>
-            <div className="w-10 h-10 rounded-full bg-[#ff5e00] flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-110">
-              <img src="/images/Vector (2).svg" alt="Binoculars" className="w-5 h-5 object-contain" />
-            </div>
+          <div className="relative flex flex-col items-center">
+            <div
+              className="pointer-events-none absolute -inset-2 rounded-full bg-gradient-to-r from-[#FF7230] via-[#FF8935] to-[#FF532B] opacity-60 blur-xl animate-pulse"
+              aria-hidden="true"
+            />
+            <button
+              onClick={toggleOrbit}
+              tabIndex={orbitMode ? -1 : 0}
+              className="relative bg-white hover:bg-neutral-100 text-black rounded-full pl-6 pr-2 py-2 flex items-center gap-4 transition-all duration-300 hover:scale-105 active:scale-95 ring-2 ring-[#FF7230]/80 shadow-[0_0_32px_rgba(255,94,0,0.65),0_0_64px_rgba(255,114,48,0.35)] hover:shadow-[0_0_40px_rgba(255,94,0,0.9),0_0_80px_rgba(255,114,48,0.5)] cursor-pointer group"
+            >
+              <span className="font-semibold text-sm">Explore Labs</span>
+              <div className="w-10 h-10 rounded-full bg-[#ff5e00] flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-110 shadow-[0_0_16px_rgba(255,94,0,0.8)]">
+                <img src="/images/Vector (2).svg" alt="Binoculars" className="w-5 h-5 object-contain" />
+              </div>
+            </button>
+          </div>
+
+          <button
+            type="button"
+            onClick={toggleOrbit}
+            tabIndex={orbitMode ? -1 : 0}
+            className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#ff8935] hover:text-white transition-colors cursor-pointer"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#ff5e00] animate-ping" />
+            <span>Click here</span>
           </button>
         </div>
 

@@ -25,6 +25,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
     });
 
     lenisRef.current = lenis;
+    (window as unknown as { __webnoxLenis?: Lenis }).__webnoxLenis = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -94,6 +95,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
       gsap.ticker.remove(handleTick);
       lenis.destroy();
       lenisRef.current = null;
+      delete (window as unknown as { __webnoxLenis?: Lenis }).__webnoxLenis;
     };
   }, []);
 
