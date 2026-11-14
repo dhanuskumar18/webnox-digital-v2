@@ -12,6 +12,7 @@ import ConversionCta from "@/components/ai-services/ConversionCta";
 import AiDevelopmentProcess from "@/components/sections/AiDevelopmentProcess";
 import Services from "@/components/sections/Services";
 import LabsSectionGate from "@/components/sections/LabsSectionGate";
+import TechStack from "@/components/ai-services/TechStack";
 import TechStackTable from "@/components/sections/TechStackTable";
 import IndustrySolutions from "@/components/sections/IndustrySolutions";
 import LetsGrowTogether from "@/components/sections/LetsGrowTogether";
@@ -41,9 +42,10 @@ export default function Home() {
         <LabsSectionGate>
           {/* 8. Build, Launch and Grow With an AI-Native Partner */}
           <ConversionCta />
+          <TechStack />
 
           {/* 11. Technologies Powering Our AI and Software Solutions */}
-          <TechStackTable />
+          {/* <TechStackTable /> */}
           {/* 4. AI-Native Systems We Build & Operate */}
           <Solutions />
           {/* 7. Why Choose Webnox as Your AI-Native Partner */}
